@@ -1,10 +1,15 @@
 import React from "react";
-import Card from './Card'
+import Card from '../UI/Card'
 import './ExpenseItem.css'
 import ExpenseDate from './ExpenseDate'
 
 
 const ExpenseItem = (props) => {
+
+const clickHandler = () => {
+	console.log('clicked by handler')
+}
+
 	return (
 		<Card className='expense-item'>
 			<ExpenseDate date={props.date}/>
@@ -12,6 +17,7 @@ const ExpenseItem = (props) => {
         <h2>{props.title}</h2>
         <div className="expense-item__price">${props.amount}</div>
       </div>
+			<button onClick={clickHandler}>Change Title</button>
 		</Card>
 	);
 };
