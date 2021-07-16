@@ -25,9 +25,15 @@ const App = () => {
 		},
 	];
 
+  const addExpenseHandler = expense => {
+    console.log('In App.js')
+    console.log(expense)
+  }
+
 	return (
 		<div>
-      <NewExpense />
+      {/* makes addExpenseHandler function available to NewExpense as a prop - expects expense data*/}
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses expenses={expenses} />
 		</div>
 	);

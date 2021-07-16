@@ -28,6 +28,7 @@ const ExpenseForm = (props) => {
       amount: enteredAmount,
       date: new Date(enteredDate)
     }
+    //calls the function from NewExpense and passes data to it - passes data upa
     props.onSaveExpenseData(expenseData)
     setEnteredTitle('')
     setEnteredAmount('')
