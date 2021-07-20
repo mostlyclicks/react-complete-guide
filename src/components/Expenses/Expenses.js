@@ -23,16 +23,24 @@ const Expenses = (props) => {
 	return (
 		<Card className="expenses">
 			<ExpenseFilter onSelectYear={selectYear} selected={filteredYear} />
-			{filteredExpenses.map((expense) => {
-				return (
-					<ExpenseItem
-						key={expense.id}
-						title={expense.title}
-						date={expense.date}
-						amount={expense.amount}
-					/>
-				);
-			})}
+
+			{filteredExpenses.length === 0 ? (
+				<p style={{color:'orange'}}>No Expenses found for this date range</p> 
+			) : (
+				filteredExpenses.map((expense) => {
+					return (
+						<ExpenseItem
+							key={expense.id}
+							title={expense.title}
+							date={expense.date}
+							amount={expense.amount}
+						/>
+					);
+				})
+			)}
+			
+
+		
 			
 			
 		</Card>
