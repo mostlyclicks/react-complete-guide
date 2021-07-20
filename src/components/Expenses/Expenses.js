@@ -20,10 +20,28 @@ const Expenses = (props) => {
 	})
 
 
+	let expensesContent = <p style={{color:'orange'}}>No Expenses found for this date range</p>
+
+	if (filteredExpenses.length > 0) {
+		expensesContent = filteredExpenses.map((expense) => {
+			return (
+				<ExpenseItem
+					key={expense.id}
+					title={expense.title}
+					date={expense.date}
+					amount={expense.amount}
+				/>
+			);
+		})
+	}
+
 	return (
 		<Card className="expenses">
 			<ExpenseFilter onSelectYear={selectYear} selected={filteredYear} />
+			{expensesContent}
 
+		
+		{/* version 1
 			{filteredExpenses.length === 0 ? (
 				<p style={{color:'orange'}}>No Expenses found for this date range</p> 
 			) : (
@@ -38,6 +56,24 @@ const Expenses = (props) => {
 					);
 				})
 			)}
+		
+		Version 2
+		{filteredExpenses.length === 0 && <p style={{color:'orange'}}>No Expenses found for this date range</p>}
+		{filteredExpenses.length > 0 && 
+			filteredExpenses.map((expense) => {
+					return (
+						<ExpenseItem
+							key={expense.id}
+							title={expense.title}
+							date={expense.date}
+							amount={expense.amount}
+						/>
+					);
+				})
+		}
+		*/}
+			
+
 			
 
 		
