@@ -30,10 +30,22 @@ const ExpenseForm = (props) => {
     }
     //calls the function from NewExpense and passes data to it - passes data upa
     props.onSaveExpenseData(expenseData)
+    
     setEnteredTitle('')
     setEnteredAmount('')
     setEnteredDate('')
   }
+
+  const cancelButtonHandler = () => {
+    setEnteredTitle('')
+    setEnteredAmount('')
+    setEnteredDate('')
+    props.onCancelButton(false)
+  }
+
+
+
+
 
   return (
     <form onSubmit={submitHandler}>
@@ -52,6 +64,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onCancelButton={cancelButtonHandler}>Cancel</button>
         <button type="submit">Add expense</button>
       </div>
     </form>
