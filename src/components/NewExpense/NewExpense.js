@@ -6,7 +6,7 @@ import './NewExpense.css'
 
 const NewExpense = (props) => {
 
-  const [showForm, setShowForm] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)  
 
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
@@ -16,17 +16,19 @@ const NewExpense = (props) => {
     console.log(expenseData)
     //passes args to a function in app JS
     props.onAddExpense(expenseData)
-    setShowForm(false)
+    setIsEditing(false)
   }
 
   const addExpenseButtonHandler = () => {
     console.log('add button clicked')
-    setShowForm(true)
   }
 
-  const cancelButtonHandler = () => {
-    props.setShowForm(false)
+  const startEditingHandler = () => {
+    setIsEditing(true)
+  }
 
+  const stopEditingHandler = () => {
+    setIsEditing(false)
   }
 
 
@@ -34,9 +36,8 @@ const NewExpense = (props) => {
   return (
     <div className='new-expense'>
 
-      {showForm === false && <button onClick={addExpenseButtonHandler}>Add New Expense</button>}
-        {/* Passes function as a prop to the form - makes the function available to the form */}
-      {showForm === true && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancelButton={cancelButtonHandler}/>}
+      {!isEditing && <button onClick={startEditingHandler}>Add New Expense</button>}
+      {isEditing && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={stopEditingHandler} />}
       
     </div>
   )
