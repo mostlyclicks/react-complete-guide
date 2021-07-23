@@ -40,7 +40,8 @@ const ExpenseForm = (props) => {
     setEnteredTitle('')
     setEnteredAmount('')
     setEnteredDate('')
-    props.onCancelButton(false)
+    props.setShowForm(false)
+
   }
 
 

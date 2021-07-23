@@ -24,16 +24,19 @@ const NewExpense = (props) => {
     setShowForm(true)
   }
 
+  const cancelButtonHandler = () => {
+    props.setShowForm(false)
+
+  }
+
+
+
   return (
     <div className='new-expense'>
 
       {showForm === false && <button onClick={addExpenseButtonHandler}>Add New Expense</button>}
         {/* Passes function as a prop to the form - makes the function available to the form */}
-      {showForm === true && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />}
-      
-
-      
-
+      {showForm === true && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancelButton={cancelButtonHandler}/>}
       
     </div>
   )
